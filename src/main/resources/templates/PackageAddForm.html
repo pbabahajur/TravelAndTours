@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Add package</title>
+
+</head>
+
+<body>
+	<th:block th:insert="adminHeader.html"></th:block>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header text-center text-white bg-primary">
+				<H5>Add Package</H5>
+			</div>
+			<Form action="/package/add" method="post">
+
+
+				<div class="card-body">
+
+					<div class="row p-2">
+						<div class="col-4">
+							Package Name
+
+						</div>
+						<div class="col-6">
+							<input type="text" name="pkg_name" class="form-control">
+
+						</div>
+					</div>
+
+					<div class="row p-2">
+						<div class="col-4">
+							Details
+
+						</div>
+						<div class="col-6">
+							<input type="text" name="pkg_details" class="form-control">
+
+						</div>
+					</div>
+
+					<div class="row p-2">
+						<div class="col-4">
+							Price
+
+						</div>
+						<div class="col-6">
+							<input type="text" name="pkg_price" class="form-control">
+
+						</div>
+					</div>
+
+					<div class="rowp-2">
+						<div class="col-4">
+							<input type="submit" value="Add">
+
+						</div>
+
+					</div>
+			</form>
+		</div>
+
+	</div>
+
+	</div>
+</body>
+
+</html>

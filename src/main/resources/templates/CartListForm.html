@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>CartList</title>
+	<!-- Latest compiled and minified CSS -->
+
+</head>
+
+<body>
+	<th:block th:insert="Header.html"></th:block>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header text-center text-white bg-primary">
+				<H5>Cart</H5>
+			</div>
+
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+
+							<th>Details</th>
+							<th>Package name</th>
+							<th>Count</th>
+							<th>Price</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c : ${cList}">
+							
+							<td>[[${c.pkg_name}]]</td>
+							<td>[[${c.pkg_details}]]</td>
+							<td><a th:href="@{/cart/decrease(id=${c.id})}"><button type="button" style="width:20px;height:30px;">-</button></a>&nbsp;[[${c.count}]]&nbsp;<a th:href="@{/cart/increase(id=${c.id})}"><button type="button" style="width:20px;height:30px;">+</button></a></td>
+							<td>[[${c.totalPrice}]]</td>
+							
+							<td><a th:href = "@{/cart/delete(id=${c.id})}"><input type = "submit" value = "Delete" class = "btn btn-danger"></td>
+												
+
+						</tr>
+						
+																	
+						
+						
+
+					</tbody>
+					
+				</table>
+
+				<p>Total: [[${totalPrice}]]</p>
+				<input type="submit" value="Buy" class="btn btn-success">
+				
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

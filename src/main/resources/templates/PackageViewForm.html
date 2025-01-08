@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>PackageList</title>
+<!-- Latest compiled and minified CSS -->
+
+</head>
+<body>
+<th:block th:insert="Header.html"></th:block>
+<div class="container-fluid">
+		<div class="card">
+			<div class="card-header text-center text-white bg-primary">
+			<H5>Buy packages</H5>
+			</div>
+
+			<div class="card-body">
+				<div class="card-body">
+			
+		<table class = "table">
+		<thead>
+		<tr>
+			<th>Package name</th>
+			<th>Details</th>
+			<th>Price</th>
+		</tr>
+			</thead>
+			<tbody>
+			<tr th:each="p : ${pList}">
+			<td>[[${p.pkg_name}]]</td>
+			<td>[[${p.pkg_details}]]</td>
+			<td>[[${p.pkg_price}]]</td>
+			
+			<td>
+				
+				<a th:href = "@{/cart/add(id=${p.id})}"><input type = "submit" value = "Add to cart" class = "btn btn-danger"></a>
+				<input type = "submit" value = "Buy" class ="btn btn-success">	
+			</td>
+		</tr>
+		
+			</tbody>
+			</table>
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>

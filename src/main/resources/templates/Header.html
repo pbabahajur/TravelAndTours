@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th = "www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tours and Travel</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="navbar">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Tours And Travels</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      
+	      <li><a href="/package/view">View Packages</a></li>
+		  <li><a href=" /gallery">Gallery</a></li>
+		  <li><a id="#">About us</a></li>
+		  <li><a href="#">Contact us</a></li>
+		  
+	    </ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/cart/list" style="font-size:24px" class="fa">&#xf07a;</a></li>
+			<li><p style  ="color: red">Welcome, [[${session.validuser.fname}]]</p></li> 
+	      <li><a href="/logout" <span class="glyphicon glyphicon-log-in"> Logout</span></a></li>
+	    </ul>
+	  </div>
+	</nav>
+</body>
+</html>

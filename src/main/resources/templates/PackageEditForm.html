@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit package</title>
+<!-- Latest compiled and minified CSS -->
+
+</head>
+<body>
+<th:block th:insert="adminHeader.html"></th:block>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header text-center text-white bg-primary">
+				<H5>Package Edit</H5>
+			</div>
+
+			<div class="card-body">
+				<form action="/package/update" method="post" th:object="${pModel}">
+
+					<div class="row p-2">
+						<div class="col-4">Package name</div>
+						<div class="col-6">
+							<input type="text" th:field="*{pkg_name}" class="form-control">
+
+						</div>
+					</div>
+					<div class="row p-2">
+						<div class="col-4">Details</div>
+						<div class="col-6">
+							<input type="text" th:field="*{pkg_details}" class="form-control">
+
+						</div>
+					</div>
+					<div class="row p-2">
+						<div class="col-4">Price</div>
+						<div class="col-6">
+							<input type="text" th:field="*{pkg_price}" class="form-control">
+
+						</div>
+					</div>
+
+
+					<div class="row p-2">
+						<div class="col-4"></div>
+						<div class="col-6">
+							<input type="submit" value="Update" class="btn btn-success">
+
+						</div>
+					</div>
+					<input type="hidden" th:field="*{id}">
+				</form>
+			</div>
+
+
+			
+		</div>
+
+	</div>
+</body>
+</html>
