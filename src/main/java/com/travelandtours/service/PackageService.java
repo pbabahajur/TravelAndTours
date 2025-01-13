@@ -1,8 +1,11 @@
 package com.travelandtours.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import com.travelandtours.model.TourPackage;
+
+import jakarta.servlet.http.Part;
 
 public interface PackageService {
 	

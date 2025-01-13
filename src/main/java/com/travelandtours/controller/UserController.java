@@ -83,8 +83,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/adminLogin")
-	public String adminLogin(@ModelAttribute Admin admin, Model model, @RequestParam("g-recaptcha-response") String grepCode, HttpSession session) throws IOException {
-		if(VerifyRecaptcha.verify(grepCode)) {
+	public String adminLogin(@ModelAttribute Admin admin, Model model, /*@RequestParam("g-recaptcha-response") String grepCode,*/ HttpSession session) throws IOException {
+		//if(VerifyRecaptcha.verify(grepCode)) {
 			Admin adm = adminService.adminLogin(admin.getUsername(), admin.getPassword());
 			
 			
@@ -98,13 +98,13 @@ public class UserController {
 			model.addAttribute("message", "User not found!");
 			return "adminLogin";
 			}
-		}
-		model.addAttribute("message", "You are robot.");
-		return "adminLogin";
+		//}
+		//model.addAttribute("message", "You are robot.");
+		//return "adminLogin";
 		
-		
+	}	
 	}
 	
 	
 	
-}
+

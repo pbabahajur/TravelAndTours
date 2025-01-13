@@ -1,11 +1,16 @@
 package com.travelandtours.model;
 
+import java.io.File;
+import java.sql.Blob;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.servlet.http.Part;
 
 @Entity
 @Table(name = "cart") // Explicitly specify the table name if needed
@@ -22,7 +27,8 @@ public class Cart {
     private int totalPrice;
     @ManyToOne
     private TourPackage pkg;
-
+    @Lob
+    private byte[] photo;
     private Integer userId;
 
     // Default constructor
@@ -30,13 +36,14 @@ public class Cart {
     }
 
     // Parameterized constructor
-    public Cart(String pkg_details, String pkg_name, int pkg_price, TourPackage pkg, Integer userId, int totalPrice) {
+    public Cart(String pkg_details, String pkg_name, int pkg_price, TourPackage pkg, Integer userId, int totalPrice, byte[] photo) {
         this.pkg_details = pkg_details;
         this.pkg_name = pkg_name;
         this.pkg_price = pkg_price;
         this.pkg = pkg;
         this.userId = userId;
         this.totalPrice = totalPrice;
+        this.photo = photo;
        
     }
 
@@ -103,4 +110,13 @@ public class Cart {
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+    
 }

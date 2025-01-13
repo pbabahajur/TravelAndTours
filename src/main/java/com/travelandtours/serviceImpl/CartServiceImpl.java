@@ -26,7 +26,7 @@ public class CartServiceImpl implements CartService{
 		Cart ct = new Cart();
 		TourPackage tp = tourRepo.findById(id).get();
 		if(tp != null) {
-			Cart cart = new Cart(tp.getPkg_details(), tp.getPkg_name(),tp.getPkg_price(),tp, user, ct.getTotalPrice());
+			Cart cart = new Cart(tp.getPkg_details(), tp.getPkg_name(),tp.getPkg_price(),tp, user, ct.getTotalPrice(), tp.getPhoto());
 			cartRepo.save(cart);
 		}
 	}

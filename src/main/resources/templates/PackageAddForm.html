@@ -14,55 +14,65 @@
 			<div class="card-header text-center text-white bg-primary">
 				<H5>Add Package</H5>
 			</div>
-			<Form action="/package/add" method="post">
-
-
-				<div class="card-body">
-
-					<div class="row p-2">
-						<div class="col-4">
-							Package Name
-
-						</div>
-						<div class="col-6">
-							<input type="text" name="pkg_name" class="form-control">
-
-						</div>
-					</div>
-
-					<div class="row p-2">
-						<div class="col-4">
-							Details
-
-						</div>
-						<div class="col-6">
-							<input type="text" name="pkg_details" class="form-control">
-
-						</div>
-					</div>
-
-					<div class="row p-2">
-						<div class="col-4">
-							Price
-
-						</div>
-						<div class="col-6">
-							<input type="text" name="pkg_price" class="form-control">
-
-						</div>
-					</div>
-
-					<div class="rowp-2">
-						<div class="col-4">
-							<input type="submit" value="Add">
-
-						</div>
+			<div class="row p-2">
+				<Form action="/package/add" method="post" enctype="multipart/form-data">
+					
+				<div class="row p-2">
+					<div class="col-4">
+						Package Name
 
 					</div>
-			</form>
+					<div class="col-6">
+						<input type="text" name="pkg_name" class="form-control">
+
+					</div>
+				</div>
+
+				<div class="row p-2">
+					<div class="col-4">
+						Details
+
+					</div>
+					<div class="col-6">
+						<input type="text" name="pkg_details" class="form-control" >
+
+					</div>
+				</div>
+
+				<div class="row p-2">
+					<div class="col-4">
+						Price
+
+					</div>
+					<div class="col-6">
+						<input type="text" name="pkg_price" class="form-control">
+
+					</div>
+				</div>
+				
+				<div class="row p-2">
+									<div class="col-4">
+										Image
+				
+									</div>
+									<div class="col-6">
+										<input type = "file" name="image" class = "form-control">
+				
+									</div>
+								</div>
+
+				[[${error}]]
+				<div class="rowp-2">
+					<div class="col-4">
+						<input type="submit" value="Add" class="btn btn-success">
+
+					</div>
+
+				</div>
+				</form>
+			</div>
+
 		</div>
-
-	</div>
 
 	</div>
 </body>

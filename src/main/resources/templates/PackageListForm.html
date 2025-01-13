@@ -18,6 +18,7 @@
 		<table class = "table">
 		<thead>
 		<tr>
+			<th></th>
 			<th>Package name</th>
 			<th>Details</th>
 			<th>Price</th>
@@ -26,6 +27,7 @@
 			</thead>
 			<tbody>
 			<tr th:each="p : ${pList}">
+			<td><img th:src="@{'/package/image/' + ${p.id}}" alt="Package Image" /></td>
 			<td>[[${p.pkg_name}]]</td>
 			<td>[[${p.pkg_details}]]</td>
 			<td>[[${p.pkg_price}]]</td>

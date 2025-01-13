@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mysql.cj.Session;
@@ -70,6 +72,20 @@ public class CartController {
 		statement.close();
 		return "redirect:/package/view";
 	}
+	
+	@GetMapping("/image/{id}")
+	public ResponseEntity<byte[]> getCartImage(@PathVariable int id) {
+	     Cart cart = cartService.getPackageById(id);
+	    
+	    if (cart != null && cart.getPhoto() != null) {
+	        return ResponseEntity.ok()
+	                .contentType(MediaType.IMAGE_JPEG) // or MediaType.IMAGE_PNG depending on the image type
+	                .body(cart.getPhoto());
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // return 404 if image is not found
+	    }
+	}
+
 
 	@GetMapping("list")
 	public String listPackage(Model model, HttpSession session) throws SQLException {

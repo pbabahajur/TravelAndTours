@@ -1,31 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th = "www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Tours and Travel</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header with Navigation</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Tours And Travels</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      
-	      <li><a href="/package/view">View Packages</a></li>
-		  <li><a href=" /gallery">Gallery</a></li>
-		  <li><a id="#">About us</a></li>
-		  <li><a href="#">Contact us</a></li>
-		  
-	    </ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/cart/list" style="font-size:24px" class="fa">&#xf07a;</a></li>
-			<li><p style  ="color: red">Welcome, [[${session.validuser.fname}]]</p></li> 
-	      <li><a href="/logout" <span class="glyphicon glyphicon-log-in"> Logout</span></a></li>
-	    </ul>
-	  </div>
-	</nav>
+  <!-- Header with Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Tours and travels</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- First Section of Links (View Packages, Gallery) -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/package/view">View Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/gallery">Gallery</a>
+          </li>
+        </ul>
+
+        <!-- Second Section of Links (About Us, Contact Us) -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#aboutUs">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contactUs">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- User Info and Cart Section -->
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item">
+            <a class="nav-link" href="/cart/list">
+              <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <p style="color: red;">Welcome, [[${session.validuser.fname}]]</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
