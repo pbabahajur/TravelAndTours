@@ -56,14 +56,16 @@ public class PackageController {
 	        @RequestParam("image") MultipartFile photoFile, // Explicitly handle the photo upload
 	        @ModelAttribute TourPackage tourPkg, // Map the rest of the object
 	        Model model) throws IOException {
-
+		//long imgsize = photoFile.getSize()/1024;//size in kg
 	    // Validate and convert the photo file to a byte array
-	    if (!photoFile.isEmpty()) {
+	    if (!photoFile.isEmpty()){
 	        tourPkg.setPhoto(photoFile.getBytes()); // Set photo bytes to the entity
-	    } else {
+	    } 
+	    	else {
 	        model.addAttribute("error", "Photo is required.");
 	        return "PackageAddForm";
 	    }
+	    
 
 	    // Save the TourPackage to the database
 	    pkgService.addPackage(tourPkg);

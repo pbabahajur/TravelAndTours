@@ -9,15 +9,12 @@
 	<th:block th:insert="Header.html"></th:block>
 	<div class="container-fluid">
 		<div class="card">
-			<div class="card-header text-center text-white bg-primary">
-			<H5>Product gallery</H5>
-			</div>
 
 			<div class="card-body">
 			
-			<span th:each = "prod: ${prodList}">
+			<span th:each = "photo: ${photoList}">
 			
-			<img class = "m-2"  th:src="@{${prod.image}}" width = "300px" height="300px" >
+			<img th:src="@{'/image/' + ${photo.id}}" alt="Package Image" style="justify-content: center; width:580px; height: 400px;"/>
 			</span>
 			
 			</div>

@@ -1,103 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Tours and travels</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<html xmlns:th="https://www.thymeleaf.org">
 
-  <style>
-    .carousel {
-      height: 80vh; /* Set carousel height to 80% of viewport height */
-      position: relative;
-    }
-    .carousel-inner {
-      height: 100%;
-    }
-    .carousel-caption {
-      position: absolute;
-      top: 55%; /* Center vertically */
-      
-      transform: translateY(-50%); /* Vertically center the caption */
-      text-align: left; /* Align text to the left */
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.5); /* Optional: to make the text more readable */
-      padding: 10px;
-      max-width: 50%; /* Adjust width to fit text */
-    }
-    .carousel-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensure image covers the area */
-    }
-  </style>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	   
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	   
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+	 
+	<style>
+		html {
+		  scroll-behavior: smooth;
+		}
+		.carousel {
+			height: 80vh; /* Set carousel height to 80% of viewport height */
+			position: relative;
+		}
+		.carousel-inner {
+			height: 100%;
+		}
+		.carousel-caption {
+			position: absolute;
+			top: 55%; /* Center vertically */
+			
+			transform: translateY(-50%); /* Vertically center the caption */
+			text-align: left; /* Align text to the left */
+			color: #fff;
+			background-color: rgba(0, 0, 0, 0.5); /* Optional: to make the text more readable */
+			padding: 10px;
+			max-width: 50%; /* Adjust width to fit text */
+		}
+		.carousel-item img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover; /* Ensure image covers the area */
+		}
+		
+		.about-section {
+		            padding: 40px 0;
+		            background-color: #f4f4f4;
+		        }
+		        .about-header {
+		            text-align: center;
+		            margin-bottom: 30px;
+		        }
+		        .about-header h1 {
+		            font-size: 36px;
+		            font-weight: bold;
+		        }
+		        .about-content {
+		            display: flex;
+		            flex-wrap: wrap;
+		            justify-content: space-between;
+		        }
+		        .about-content div {
+		            flex: 1;
+		            padding: 20px;
+		            margin: 10px;
+		        }
+		        .about-content img {
+		            width: 100%;
+		            border-radius: 10px;
+		        }
+		        .about-mission, .about-values {
+		            background-color: #ffffff;
+		            border-radius: 8px;
+		            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		        }
+		        .about-contact {
+		            background-color: #ffffff;
+		            padding: 30px;
+		            border-radius: 8px;
+		            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		        }
+	</style>
+
 </head>
+
 <body>
 	<th:block th:insert="Header.html"></th:block>
 	<div class="container">
-	  <h2>Book your next vacation!</h2>
-	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-	    <!-- Indicators -->
-	    <ol class="carousel-indicators">
-	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-	      <li data-target="#myCarousel" data-slide-to="1"></li>
-	      <li data-target="#myCarousel" data-slide-to="2"></li>
-	      <li data-target="#myCarousel" data-slide-to="3"></li>
-	    </ol>
-	  
-	    <!-- Wrapper for slides -->
-	    <div class="carousel-inner">
-	      <div class="carousel-item active">
-	        <img src="image/image1.webp" alt="Roma, Italy">
-	        <div class="carousel-caption">
-	          <h3>Roma, Italy</h3>
-	          <p>Colosseum. Italy is always so much fun!</p>
-	        </div>
-	      </div>
-	  
-	      <div class="carousel-item">
-	        <img src="image/image2.webp" alt="Rio De Janeiro, Brazil">
-	        <div class="carousel-caption">
-	          <h3>Rio De Janeiro, Brazil</h3>
-	          <p>Christ the Redeemer!</p>
-	        </div>
-	      </div>
-	    
-	      <div class="carousel-item">
-	        <img src="image/image3.jpg" alt="Agra, India">
-	        <div class="carousel-caption">
-	          <h3>Agra, India</h3>
-	          <p>Taj Mahal. A Mughal masterpiece!</p>
-	        </div>
-	      </div>
-	    
-	      <div class="carousel-item">
-	        <img src="image/image4.jpeg" alt="Giza, Egypt">
-	        <div class="carousel-caption">
-	          <h3>Giza, Egypt</h3>
-	          <p>The Pyramids. Ancient architecture!</p>
-	        </div>
-	      </div>
-	    </div>
+		<h2>Book your next vacation!</h2>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+			</ol>
+		  
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="imagee/image5.jpg" alt="Pashupati, Nepal">
+										<div class="carousel-caption">
+											<h3>Kathmandu, Nepal</h3>
+											<p>The Pashupatinath Temple. Home of hindus!</p>
+										</div>
+									</div>
+		  
+				<div class="carousel-item">
+					<img src="imagee/image2.webp" alt="Rio De Janeiro, Brazil">
+					<div class="carousel-caption">
+						<h3>Rio De Janeiro, Brazil</h3>
+						<p>Christ the Redeemer!</p>
+					</div>
+				</div>
+			
+				<div class="carousel-item">
+					<img src="imagee/image3.jpg" alt="Agra, India">
+					<div class="carousel-caption">
+						<h3>Agra, India</h3>
+						<p>Taj Mahal. A Mughal masterpiece!</p>
+					</div>
+				</div>
+			
+				<div class="carousel-item">
+					<img src="imagee/image4.jpeg" alt="Giza, Egypt">
+					<div class="carousel-caption">
+						<h3>Giza, Egypt</h3>
+						<p>The Pyramids. Ancient architecture!</p>
+					</div>
+				</div>
+			
+				<div class="carousel-item">
+					<img src="imagee/image1.webp" alt="Roma, Italy">
+										<div class="carousel-caption">
+											<h3>Roma, Italy</h3>
+											<p>Colosseum. Italy is always so much fun!</p>
+										</div>
+									</div>
+					
+			</div>
+		
+			<!-- Controls -->
+			<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<div id="aboutUs">
+		        <div class="about-header">
+		            <h1>About Us</h1>
+		            <p>Welcome to Explore Travel! We offer unforgettable travel experiences.</p>
+		        </div>
+		
+		        <div class="about-content">
+		            <!-- Company Description -->
+		            <div class="about-description">
+		                <h3>Who We Are</h3>
+		                <p>At Explore Travel, we are passionate about creating memorable travel experiences. For over 10 years, we have been helping travelers explore new destinations, experience diverse cultures, and create lifelong memories. Our team of experienced travel experts is dedicated to curating personalized travel packages to meet the unique needs of every traveler.</p>
+		            </div>
+		
+		            <!-- Company Mission -->
+		            <div class="about-mission">
+		                <h3>Our Mission</h3>
+		                <p>Our mission is to provide affordable and high-quality travel services while ensuring customer satisfaction. We strive to make travel accessible, fun, and enriching for everyone, from solo adventurers to families and groups.</p>
+		            </div>
+		
+		            <!-- Company Values -->
+		            <div class="about-values">
+		                <h3>Our Values</h3>
+		                <ul>
+		                    <li><strong>Customer Focused:</strong> We prioritize our customers' needs and ensure they have a seamless experience from start to finish.</li>
+		                    <li><strong>Integrity:</strong> We operate with honesty and transparency in all our dealings.</li>
+		                    <li><strong>Innovation:</strong> We are constantly evolving to provide the latest trends in travel experiences.</li>
+		                    <li><strong>Sustainability:</strong> We promote responsible tourism and work with partners who share our commitment to environmental conservation.</li>
+		                </ul>
+		            </div>
+		        </div>
+		
+		        <!-- Company Image -->
+		        <div class="about-image">
+		            <img src="imagee/travelbanner.avif" width=100%>
+		        </div>
+		
+		        <!-- Contact Information -->
+		        <div id="contactUs">
+		            <h3>Contact Us</h3>
+		            <p>If you have any questions or would like to learn more about our services, feel free to contact us!</p>
+		            <p><strong>Email:</strong> pbabahajurs@gmail.com</p>
+		            <p><strong>Phone:</strong> +977 97 6541 1779</p>
+		            <p><strong>Address:</strong> 123 Travel Lane, City, Country</p>
+		        </div>
+		    </div>
 	
-	    <!-- Controls -->
-	    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-	      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	      <span class="sr-only">Previous</span>
-	    </a>
-	    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-	      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	      <span class="sr-only">Next</span>
-	    </a>
-	  </div>
+		<div class="card-footer text-center bg-warning">
+					copyright@2024
+					</div>
 	</div>
-
+	
 </body>
+
 </html>

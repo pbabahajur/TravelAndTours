@@ -1,53 +1,93 @@
 <!DOCTYPE html>
-<html xmlns:th = "https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>PackageList</title>
-<!-- Latest compiled and minified CSS -->
+    <meta charset="ISO-8859-1">
+    <title>PackageList</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Container for all products */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px; /* Adjust the gap between product groups */
+            justify-content: flex-start; /* Align the items to the left */
+        }
 
+        /* Individual product group */
+        .product-item {
+            display: flex;
+            flex-direction: column; /* Stack image and button vertically */
+            align-items: center; /* Center content horizontally */
+            width: 22%; /* Reduced width for more compact display */
+            margin-bottom: 15px; /* Reduced space between rows */
+            text-align: center;
+            border: 1px solid #ddd; /* Optional: Adds a border around each product */
+            padding: 10px; /* Reduced padding inside the product box */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background color */
+        }
+
+        /* Product image styling */
+        .product-image img {
+            width: 100%; /* Ensure the image fills its container */
+            height: 250px; /* Reduced height for more compact images */
+            object-fit: cover; /* Ensure the image covers the container without distortion */
+            border-radius: 8px; /* Optional: rounded corners for the image */
+        }
+
+        /* Add to cart button styling */
+        .product-actions {
+            margin-top: 5px; /* Reduced margin for the button */
+        }
+
+        .product-actions input {
+            padding: 8px; /* Reduced padding inside the button */
+            font-size: 14px; /* Smaller font size */
+            width: 100%; /* Button fills the width of the container */
+            background-color: #e74c3c; /* Red background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-actions input:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+    </style>
 </head>
 <body>
-<th:block th:insert="Header.html"></th:block>
-<div class="container-fluid">
-		<div class="card">
-			<div class="card-header text-center text-white bg-primary">
-			<H5>Buy packages</H5>
-			</div>
-
-			<div class="card-body">
-				<div class="card-body">
-			
-		<table class = "table">
-		<thead>
-		<tr>
-			<th></th>
-			<th>Package name</th>
-			<th>Details</th>
-			<th>Price</th>
-		</tr>
-			</thead>
-			<tbody>
-			<tr th:each="p : ${pList}">
-			<td><img th:src="@{'/package/image/' + ${p.id}}" alt="Package Image" /></td>
-
-			<td>[[${p.pkg_name}]]</td>
-			<td>[[${p.pkg_details}]]</td>
-			<td>[[${p.pkg_price}]]</td>
-			
-			<td>
-				
-				<a th:href = "@{/cart/add(id=${p.id})}"><input type = "submit" value = "Add to cart" class = "btn btn-danger"></a>
-				<input type = "submit" value = "Buy" class ="btn btn-success">	
-			</td>
-			
-		</tr>
-		[[${item_already_in_cart}]]
-			</tbody>
-			</table>
-			</div>
-		</div>
-		
-	</div>
-
+    <th:block th:insert="Header.html"></th:block>
+	<p style="color: green; text-align: center;">[[${itemExists}]]</p>
+    <div class="container-fluid">
+        <div class="card-body">
+            <!-- Loop through products -->
+            <div class="product-container">
+                <!-- Use <div> to render each product -->
+                <div th:each="p : ${pList}" class="product-item">
+                    <!-- Product Image -->
+                    <div class="product-image">
+                        <img th:src="@{'/package/image/' + ${p.id}}" alt="Package Image"/>
+                    </div>
+                    <div>
+                        <h4 style="color: red;">[[${p.pkg_name}]]</h4>
+                        <br>
+                        <h3>Price: [[${p.pkg_price}]]</h3>
+                    </div>
+                    
+                    <!-- Add to Cart Button -->
+                    <div class="product-actions">
+                        <a th:href="@{/cart/add(id=${p.id})}">
+                            <input type="submit" value="Add to cart"/>
+							
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="card-footer text-center bg-warning">
+					copyright@2024
+					</div>
+    </div>
 </body>
 </html>

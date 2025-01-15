@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mysql.cj.Session;
 import com.travelandtours.model.Cart;
@@ -40,7 +41,7 @@ public class CartController {
 	}
 
 	@GetMapping("/add")
-	public String addToCart(@RequestParam int id, HttpSession session, Model model) throws SQLException {
+	public String addToCart(@RequestParam int id, HttpSession session, Model model, RedirectAttributes redirectAttribute) throws SQLException {
 		int sessionId = (int) session.getAttribute("userId");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelandtours", "root", "root1");
 		Statement statement = con.createStatement();
@@ -50,7 +51,8 @@ public class CartController {
 		
 		if(resultSet.next()) {
 			
-			model.addAttribute("item_already_in_cart","Item already in cart.");
+			 redirectAttribute.addFlashAttribute("itemExists","Item already in cart.");
+			
 
 	        
 		} else {
