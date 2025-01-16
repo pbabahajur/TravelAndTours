@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th = "https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Gallery</title>
+	<meta charset="ISO-8859-1">
+	<title>Gallery</title>
 
 </head>
+
 <body>
 	<th:block th:insert="Header.html"></th:block>
 	<div class="container-fluid">
 		<div class="card">
 
 			<div class="card-body">
-			
-			<span th:each = "photo: ${photoList}">
-			
-			<img th:src="@{'/image/' + ${photo.id}}" alt="Package Image" style="justify-content: center; width:580px; height: 400px;"/>
-			</span>
-			
+
+				<span style=" justify-content: center;" th:each="photo: ${photoList}">
+
+					<img th:src="@{'/image/' + ${photo.id}}" alt="Package Image" style="width:593px; height: 400px;" />
+				</span>
+
 			</div>
-			
+
 
 			<div class="card-footer text-center bg-warning">
-			copyright@2024
+				copyright@2024
 			</div>
 		</div>
 
 	</div>
 </body>
+
 </html>

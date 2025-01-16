@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Edit package</title>
-<!-- Latest compiled and minified CSS -->
+	<meta charset="ISO-8859-1">
+	<title>Edit package</title>
+	<!-- Latest compiled and minified CSS -->
 
 </head>
+
 <body>
-<th:block th:insert="adminHeader.html"></th:block>
+	<th:block th:insert="adminHeader.html"></th:block>
 	<div class="container-fluid">
 		<div class="card">
 			<div class="card-header text-center text-white bg-primary">
@@ -15,7 +17,7 @@
 			</div>
 
 			<div class="card-body">
-				<form action="/package/update" method="post" th:object="${pModel}">
+				<form action="/package/update" method="post" th:object="${pModel}" enctype="multipart/form-data">
 
 					<div class="row p-2">
 						<div class="col-4">Package name</div>
@@ -39,6 +41,14 @@
 						</div>
 					</div>
 
+					<div class="row p-2">
+						<div class="col-4">Photo</div>
+						<div class="col-6">
+							<input type="file" name="image" class="form-control">
+						</div>
+					</div>
+
+
 
 					<div class="row p-2">
 						<div class="col-4"></div>
@@ -52,9 +62,10 @@
 			</div>
 
 
-			
+
 		</div>
 
 	</div>
 </body>
+
 </html>

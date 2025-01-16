@@ -1,93 +1,126 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>PackageList</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Container for all products */
-        .product-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px; /* Adjust the gap between product groups */
-            justify-content: flex-start; /* Align the items to the left */
-        }
+	<meta charset="ISO-8859-1">
+	<title>PackageList</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		/* Container for all products */
+		.product-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 40px;
+			/* Adjust the gap between product groups */
+			justify-content: flex-start;
+			/* Align the items to the left */
+		}
 
-        /* Individual product group */
-        .product-item {
-            display: flex;
-            flex-direction: column; /* Stack image and button vertically */
-            align-items: center; /* Center content horizontally */
-            width: 22%; /* Reduced width for more compact display */
-            margin-bottom: 15px; /* Reduced space between rows */
-            text-align: center;
-            border: 1px solid #ddd; /* Optional: Adds a border around each product */
-            padding: 10px; /* Reduced padding inside the product box */
-            border-radius: 8px; /* Rounded corners */
-            background-color: #f9f9f9; /* Light background color */
-        }
+		/* Individual product group */
+		.product-item {
+			display: flex;
+			flex-direction: column;
+			/* Stack image and button vertically */
+			align-items: center;
+			/* Center content horizontally */
+			width: 22%;
+			/* Reduced width for more compact display */
+			margin-bottom: 15px;
+			/* Reduced space between rows */
+			text-align: center;
+			border: 1px solid #ddd;
+			/* Optional: Adds a border around each product */
+			padding: 10px;
+			/* Reduced padding inside the product box */
+			border-radius: 8px;
+			/* Rounded corners */
+			background-color: #f9f9f9;
+			/* Light background color */
+		}
 
-        /* Product image styling */
-        .product-image img {
-            width: 100%; /* Ensure the image fills its container */
-            height: 250px; /* Reduced height for more compact images */
-            object-fit: cover; /* Ensure the image covers the container without distortion */
-            border-radius: 8px; /* Optional: rounded corners for the image */
-        }
+		/* Product image styling */
+		.product-image img {
+			width: 100%;
+			/* Ensure the image fills its container */
+			height: 250px;
+			/* Reduced height for more compact images */
+			object-fit: cover;
+			/* Ensure the image covers the container without distortion */
+			border-radius: 8px;
+			/* Optional: rounded corners for the image */
+		}
 
-        /* Add to cart button styling */
-        .product-actions {
-            margin-top: 5px; /* Reduced margin for the button */
-        }
+		/* Add to cart button styling */
+		.product-actions {
+			margin-top: 5px;
+			/* Reduced margin for the button */
+		}
 
-        .product-actions input {
-            padding: 8px; /* Reduced padding inside the button */
-            font-size: 14px; /* Smaller font size */
-            width: 100%; /* Button fills the width of the container */
-            background-color: #e74c3c; /* Red background */
-            color: white; /* White text */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+		.product-actions input {
+			padding: 8px;
+			/* Reduced padding inside the button */
+			font-size: 14px;
+			/* Smaller font size */
+			width: 100%;
+			/* Button fills the width of the container */
+			background-color: #c0392b;
+			/* Red background */
+			color: white;
+			/* White text */
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
 
-        .product-actions input:hover {
-            background-color: #c0392b; /* Darker red on hover */
-        }
-    </style>
+		.product-actions input:hover {
+			background-color: limegreen;
+			/* Darker red on hover */
+		}
+	</style>
 </head>
+
 <body>
-    <th:block th:insert="Header.html"></th:block>
+	<th:block th:insert="Header.html"></th:block>
 	<p style="color: green; text-align: center;">[[${itemExists}]]</p>
-    <div class="container-fluid">
-        <div class="card-body">
-            <!-- Loop through products -->
-            <div class="product-container">
-                <!-- Use <div> to render each product -->
-                <div th:each="p : ${pList}" class="product-item">
-                    <!-- Product Image -->
-                    <div class="product-image">
-                        <img th:src="@{'/package/image/' + ${p.id}}" alt="Package Image"/>
-                    </div>
-                    <div>
-                        <h4 style="color: red;">[[${p.pkg_name}]]</h4>
-                        <br>
-                        <h3>Price: [[${p.pkg_price}]]</h3>
-                    </div>
-                    
-                    <!-- Add to Cart Button -->
-                    <div class="product-actions">
-                        <a th:href="@{/cart/add(id=${p.id})}">
-                            <input type="submit" value="Add to cart"/>
-							
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<div class="container-fluid">
+		<div class="card-body">
+			<!-- Loop through products -->
+
+			<div class="product-container">
+				<!-- Use <div> to render each product -->
+				<div th:each="p : ${pList}" class="product-item">
+					<a style="text-decoration: none;" th:href="@{/description/view(id=${p.id})}">
+						<!-- Product Image -->
+						<div class="product-image">
+							<img th:src="@{'/package/image/' + ${p.id}}" alt="Package Image" />
+						</div>
+						<div>
+							<h4 style="color: red;">[[${p.pkg_name}]]</h4>
+							<br>
+							Price </br>(per person)
+							<h5>[[${p.pkg_price}]]</h5>
+						</div>
+
+						<!-- Add to Cart Button -->
+						<div class="product-actions">
+							<a th:href="@{/cart/add(id=${p.id})}">
+								<input type="submit" value="Add to cart" />
+
+							</a>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div id="overlay" class="overlay"></div>
+
+
 		<div class="card-footer text-center bg-warning">
-					copyright@2024
-					</div>
-    </div>
+			copyright@2024
+		</div>
+	</div>
+
 </body>
+
 </html>

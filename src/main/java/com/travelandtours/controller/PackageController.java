@@ -1,16 +1,6 @@
 package com.travelandtours.controller;
 
-
-import java.io.File;
-
 import java.io.IOException;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,11 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.travelandtours.model.TourPackage;
 
 import com.travelandtours.service.PackageService;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
 
 
 
@@ -119,7 +104,11 @@ public class PackageController {
 		
 	}
 	@PostMapping("/update")
-	public String update(@ModelAttribute TourPackage pkg) {
+	public String update(@ModelAttribute TourPackage pkg, @RequestParam("image")MultipartFile photo) throws IOException {
+		if(!photo.isEmpty()) {
+			pkg.setPhoto(photo.getBytes());
+			
+		}
 		pkgService.updatePackage(pkg);
 		return "redirect:/package/list";
 	}

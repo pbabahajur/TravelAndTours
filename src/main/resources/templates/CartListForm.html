@@ -7,55 +7,93 @@
 	<!-- Latest compiled and minified CSS -->
 
 </head>
+<style>
+	.about-section {
+		padding: 40px 0;
+		background-color: #f4f4f4;
+	}
+
+
+	.about-content {
+		text-align: center;
+		display: flex;
+
+		justify-content: space-between;
+	}
+
+	.about-content div {
+		flex: 3;
+		padding: 10px;
+
+	}
+
+	.about-mission,
+	.about-values {
+		background-color: #ffffff;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.about-contact {
+		background-color: #ffffff;
+		padding: 30px;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+</style>
 
 <body>
 	<th:block th:insert="Header.html"></th:block>
-	<div class="container-fluid">
-		<div class="card">
-			<div class="card-header text-center text-white bg-primary">
-				<H5>Cart</H5>
-			</div>
 
-			<div class="card-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th></th>
+	<div class="about-content">
+		<!-- Company Description -->
+		<div class="about-description">
 
-							<th>Package name</th>
-							<th>Count</th>
-							<th>Price</th>
+			<p style="font-size: 80px;">"The greatest adventure is what lies ahead."</p>
+		</div>
+		<div class="container-fluid">
+			<!-- Company Mission -->
+			<div class="about-mission">
+				<div class="card-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th></th>
 
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="c : ${cList}">
-							<td><img th:src="@{'/cart/image/' + ${c.id}}" alt="Package Image" 	width="80px" height="80px"/></td>
+								<th>Package name</th>
+								<th>No. of people</th>
+								<th>Price</th>
 
-							<td>[[${c.pkg_name}]]</td>
-							<td><a th:href="@{/cart/decrease(id=${c.id})}"><button type="button" style="width:20px;height:30px;">-</button></a>&nbsp;[[${c.count}]]&nbsp;<a th:href="@{/cart/increase(id=${c.id})}"><button type="button" style="width:20px;height:30px;">+</button></a></td>
-							<td>[[${c.totalPrice}]]</td>
-							
-							<td><a th:href = "@{/cart/delete(id=${c.id})}"><input type = "submit" value = "Delete" class = "btn btn-danger"></td>
-												
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="c : ${cList}">
+								<td><img th:src="@{'/cart/image/' + ${c.id}}" alt="Package Image" width="80px"
+										height="80px" /></td>
 
-						</tr>
-						
-																	
-						
-						
+								<td>[[${c.pkg_name}]]</td>
+								<td><a th:href="@{/cart/decrease(id=${c.id})}"><button type="button"
+											style="width:20px;height:30px;">-</button></a>&nbsp;[[${c.count}]]&nbsp;<a
+										th:href="@{/cart/increase(id=${c.id})}"><button type="button"
+											style="width:20px;height:30px;">+</button></a></td>
+								<td>[[${c.totalPrice}]]</td>
 
-					</tbody>
-					
+								<td><a th:href="@{/cart/delete(id=${c.id})}"><input type="submit" value="Delete"
+											class="btn btn-danger"></td>
+							</tr>
+				</div>
+				</tbody>
+
 				</table>
 
 				</strong><strong>Total: [[${totalPrice}]]</strong></p>
-				<input type="submit" value="Buy" class="btn btn-success">
-				
+				<a href="/payment"><input type="submit" value="Buy" class="btn btn-success"></a>
+
 			</div>
 		</div>
 
 	</div>
+
 
 </body>
 

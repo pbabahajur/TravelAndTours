@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Header with Navigation</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Header with Navigation</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
-  <!-- Header with Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/userHome">Tours and travels</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <!-- First Section of Links (View Packages, Gallery) -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/package/view">View Packages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/photoGallery">Gallery</a>
-          </li>
-        </ul>
+	<!-- Header with Navigation Bar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<img th:src="@{'/imagee/logo.png'}" width="100px" height="100px">
+			<a class="navbar-brand" href="/userHome" style="color: lightseagreen">
+				<h2><strong>SATWIK</strong></h2>
+			</a>
+			<button class="navbar-toggler" usertype="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-        <!-- Second Section of Links (About Us, Contact Us) -->
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/userHome#aboutUs">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/userHome#contactUs">Contact Us</a>
-          </li>
-        </ul>
+			<!-- First Section of Links (View Packages, Gallery) -->
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/package/view">View Packages</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/photoGallery">Gallery</a>
 
-        <!-- User Info and Cart Section -->
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="/cart/list">
-              <i class="fas fa-shopping-cart"></i> Cart
-            </a>
-          </li>
-          <li class="nav-item">
-            <p style="color: red;">Welcome, [[${session.validuser.fname}]]</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+					<li class="nav-item">
+						<a class="nav-link" href="/userHome#aboutUs">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/userHome#contactUs">Contact Us</a>
+					</li>
+				</ul>
 
-  <!-- Bootstrap JS, Popper.js, and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+				<!-- User Info and Cart Section -->
+				<ul class="navbar-nav navbar-right">
+					<li class="nav-item">
+						<a class="nav-link" href="/cart/list">
+							<i class="fas fa-shopping-cart"></i> Cart
+						</a>
+					</li>
+					<li class="nav-item">
+						<p style="color: royalblue ;">Welcome, [[${session.validuser.fname}]]</p>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"> Logout</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Bootstrap JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

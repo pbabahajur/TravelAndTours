@@ -1,6 +1,7 @@
 package com.travelandtours.controller;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,10 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.mysql.cj.Session;
 import com.travelandtours.model.Cart;
-import com.travelandtours.model.TourPackage;
 import com.travelandtours.service.CartService;
 
 import jakarta.servlet.http.HttpSession;
@@ -51,10 +49,8 @@ public class CartController {
 		
 		if(resultSet.next()) {
 			
-			 redirectAttribute.addFlashAttribute("itemExists","Item already in cart.");
+			 redirectAttribute.addFlashAttribute("itemExists","Sorry! This item is already in cart.");
 			
-
-	        
 		} else {
 			int price = 0;
 			
